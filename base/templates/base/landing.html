@@ -1,0 +1,39 @@
+<table>
+    <tr>
+        <th>Category List:</th>
+    </tr>
+    {% for category in categories %}
+    <tr>
+        <td>{{category.name}}</td>
+    </tr>
+    {% empty %}
+    <h4>No Data...</h4>
+    {% endfor %}
+</table>
+
+<h3><a href="{% url 'base:blogadd' %}">Add Blog</a></h3>
+<br>
+<h3>Blog List:</h3><br>
+
+
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>View</th>
+        <th>Update</th>
+    </tr>
+    {% for blog in blogs %}
+    <tr>
+        <td>{{blog.name}}</td>
+        <td>{{blog.category}}</td>
+        <td><a href="{% url 'base:blog' blog.id %}">View</a></td>
+        <td><a href="{% url 'base:blogupdate' blog.id%}">Update</a></td>
+    </tr>
+    {% empty %}
+    <h4>No Data...</h4>
+    {% endfor %}
+</table>
+
+
