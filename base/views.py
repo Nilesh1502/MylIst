@@ -31,3 +31,14 @@ class BlogUpdate(UpdateView):
     fields = ['category', 'name', 'description']
     success_url = reverse_lazy('base:landing')
     template_name = 'base/addBlog.html'
+
+
+class CategoryCreate(CreateView):
+    model = CategoryModel
+    fields = ['name']
+    success_url = reverse_lazy('base:landing')
+    template_name = 'base/addCategory.html'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(CategoryCreate, self).form_valid(form)
